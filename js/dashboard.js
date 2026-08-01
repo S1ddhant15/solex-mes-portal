@@ -96,3 +96,135 @@ let powerBIURL =
 // Load Report
 
 document.getElementById("powerbiFrame").src = powerBIURL;
+
+// ===================================
+// Department Wise Sidebar
+// ===================================
+
+const menuList = document.getElementById("menuList");
+
+
+const menus = {
+
+    Production: [
+
+        {
+            name:"Dashboard",
+            icon:"bi-speedometer2"
+        },
+
+        {
+            name:"Production",
+            icon:"bi-bar-chart"
+        },
+
+        {
+            name:"Reports",
+            icon:"bi-file-earmark-bar-graph"
+        }
+
+    ],
+
+
+    Process: [
+
+        {
+            name:"Dashboard",
+            icon:"bi-speedometer2"
+        },
+
+        {
+            name:"Process",
+            icon:"bi-cpu"
+        },
+
+        {
+            name:"Reports",
+            icon:"bi-file-earmark-bar-graph"
+        }
+
+    ],
+
+
+    Maintenance: [
+
+        {
+            name:"Dashboard",
+            icon:"bi-speedometer2"
+        },
+
+        {
+            name:"Maintenance",
+            icon:"bi-tools"
+        },
+
+        {
+            name:"Reports",
+            icon:"bi-file-earmark-bar-graph"
+        }
+
+    ],
+
+
+    Management: [
+
+        {
+            name:"Dashboard",
+            icon:"bi-speedometer2"
+        },
+
+        {
+            name:"Production",
+            icon:"bi-bar-chart"
+        },
+
+        {
+            name:"Process",
+            icon:"bi-cpu"
+        },
+
+        {
+            name:"Maintenance",
+            icon:"bi-tools"
+        },
+
+        {
+            name:"Reports",
+            icon:"bi-file-earmark-bar-graph"
+        },
+
+        {
+            name:"Settings",
+            icon:"bi-gear"
+        }
+
+    ]
+
+};
+
+
+// Load Menu
+
+menus[department].forEach(item => {
+
+
+    let li = document.createElement("li");
+
+
+    li.innerHTML = `
+
+    <a href="#">
+
+    <i class="bi ${item.icon}"></i>
+
+    ${item.name}
+
+    </a>
+
+    `;
+
+
+    menuList.appendChild(li);
+
+
+});
