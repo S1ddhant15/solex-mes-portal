@@ -116,13 +116,33 @@ document.getElementById("powerbiFrame").src = powerBIURL;
 
 
 // ===================================
-// Department Wise Sidebar
+// Department Wise Sidebar + Navigation
 // ===================================
-
 
 const menuList = document.getElementById("menuList");
 
 
+// Power BI Page Names
+
+const menuPages = {
+
+    Dashboard: "7b89b3c91e4d95e740e7",
+
+    Production: "d583f0c64dd166a90eaa",
+
+    Process: "a86e5f3003a48dcee473",
+
+    Maintenance: "994fe46fc27806d8e5c4",
+
+    Reports: "7b89b3c91e4d95e740e7",
+
+    Settings: "7b89b3c91e4d95e740e7"
+
+};
+
+
+
+// Department Menu
 
 const menus = {
 
@@ -179,12 +199,46 @@ Management:[
 
 ]
 
+
 };
 
 
 
-// Create Sidebar
+// Function to change Power BI page
 
+function changePowerBIPage(page){
+
+
+    let newURL =
+
+    "https://app.powerbi.com/reportEmbed?" +
+
+    "reportId=" + reportId +
+
+    "&pageName=" + menuPages[page] +
+
+    "&navContentPaneEnabled=false" +
+
+    "&filterPaneEnabled=false" +
+
+    "&showTabs=false" +
+
+    "&autoAuth=true" +
+
+    "&ctid=" + tenantId;
+
+
+
+    document.getElementById("powerbiFrame").src = newURL;
+
+
+}
+
+
+
+
+
+// Create Sidebar
 
 menus[department].forEach(function(item){
 
@@ -194,11 +248,11 @@ menus[department].forEach(function(item){
 
     li.innerHTML = `
 
-    <a href="#">
+    <a href="#" onclick="changePowerBIPage('${item[0]}')">
 
-    <i class="bi ${item[1]}"></i>
+        <i class="bi ${item[1]}"></i>
 
-    ${item[0]}
+        ${item[0]}
 
     </a>
 
