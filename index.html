@@ -1,41 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solex MES Portal</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="login-body">
 
-<div class="login-container">
+    <div class="login-container">
 
-    <img src="images/logo.png" class="logo">
+        <img src="images/logo.png" class="logo" alt="Solex Logo">
 
-    <h1>Solex MES Portal</h1>
-    <p>Manufacturing Execution System</p>
+        <h1>Solex MES Portal</h1>
 
-    <input id="username" type="text" placeholder="Username">
+        <p>Manufacturing Execution System</p>
 
-    <input id="password" type="password" placeholder="Password">
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
 
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
 
-    <select id="department">
-        <option value="">Select Department</option>
-        <option value="Production">Production</option>
-        <option value="Quality">Quality</option>
-        <option value="Maintenance">Maintenance</option>
-        <option value="Management">Management</option>
-    </select>
+        <select id="department">
 
+            <option value="">Select Department</option>
 
-    <button onclick="login()">LOGIN</button>
+            <option value="Production">Production</option>
 
-    <p id="message"></p>
+            <option value="Quality">Quality</option>
 
-</div>
+            <option value="Maintenance">Maintenance</option>
 
+            <option value="Management">Management</option>
 
-<script src="script.js"></script>
+        </select>
+
+        <button type="button" onclick="login()">
+            LOGIN
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
