@@ -31,19 +31,26 @@ function login() {
         u.password === password
     );
 
-    if(user){
+    console.log("User Found:", user);
 
-        sessionStorage.setItem("loggedIn","true");
-        sessionStorage.setItem("role",user.role);
-        sessionStorage.setItem("username",user.username);
+    if (user) {
 
-        window.location.href="dashboard.html";
+        sessionStorage.setItem("loggedIn", "true");
+        sessionStorage.setItem("role", user.role);
+        sessionStorage.setItem("username", user.username);
 
-    }
-    else{
+        console.log("Logged In:", sessionStorage.getItem("loggedIn"));
+
+        window.location.href = "dashboard.html";
+
+    } else {
 
         alert("Invalid Username or Password");
 
     }
+}
 
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "index.html";
 }
