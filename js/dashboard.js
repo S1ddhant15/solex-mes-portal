@@ -74,6 +74,8 @@ let powerBIURL =
 "https://app.powerbi.com/reportEmbed?" +
 "reportId=" + reportId +
 "&pageName=" + pageName +
+"&navContentPaneEnabled=false" +
+"&filterPaneEnabled=false" +
 "&autoAuth=true" +
 "&ctid=" + tenantId;
 
