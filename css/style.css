@@ -246,3 +246,68 @@ body{
     border:none;
 
 }
+.login-body{
+
+    height:100vh;
+    background-image:url("images/main.background.png");
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+.login-box{
+
+    width:350px;
+    padding:35px;
+
+    background:rgba(255,255,255,0.9);
+
+    border-radius:15px;
+
+    text-align:center;
+
+}
+
+
+.logo{
+
+    width:120px;
+}
+
+
+.login-box input,
+.login-box select{
+
+    width:90%;
+    padding:12px;
+    margin:10px;
+
+}
+
+
+.login-box button{
+
+    width:95%;
+    padding:12px;
+
+    background:#0078d4;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+
+#error{
+
+    color:red;
+
+}
