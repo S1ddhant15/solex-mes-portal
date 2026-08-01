@@ -1,23 +1,49 @@
-function login(){
+const users = [
+    {
+        username: "admin",
+        password: "Solex@987",
+        role: "admin"
+    },
+    {
+        username: "production",
+        password: "Solex@Prod5",
+        role: "production"
+    },
+    {
+        username: "quality",
+        password: "Solex@Qua7",
+        role: "quality"
+    },
+    {
+        username: "maintenance",
+        password: "Solex@Maint9",
+        role: "maintenance"
+    }
+];
 
-let user =
-document.getElementById("username").value;
+function login() {
 
-let pass =
-document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
+    const user = users.find(u =>
+        u.username === username &&
+        u.password === password
+    );
 
-if(user=="admin" && pass=="solex123")
-{
+    if(user){
 
-window.location.href="dashboard.html";
+        sessionStorage.setItem("loggedIn","true");
+        sessionStorage.setItem("role",user.role);
+        sessionStorage.setItem("username",user.username);
 
-}
+        window.location.href="dashboard.html";
 
-else{
+    }
+    else{
 
-alert("Invalid Login");
+        alert("Invalid Username or Password");
 
-}
+    }
 
 }
