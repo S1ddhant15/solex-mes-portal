@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Solex MES Portal Login</title>
+    <title>Solex MES Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="login-body">
 
-<div class="login-box">
+<div class="login-container">
 
     <img src="images/logo.png" class="logo">
 
-    <h2>Solex MES Portal</h2>
+    <h1>Solex MES Portal</h1>
     <p>Manufacturing Execution System</p>
 
-    <input type="text" id="username" placeholder="Username">
+    <input id="username" type="text" placeholder="Username">
 
-    <input type="password" id="password" placeholder="Password">
+    <input id="password" type="password" placeholder="Password">
+
 
     <select id="department">
         <option value="">Select Department</option>
-        <option value="production">Production</option>
-        <option value="quality">Quality</option>
-        <option value="maintenance">Maintenance</option>
-        <option value="management">Management</option>
+        <option value="Production">Production</option>
+        <option value="Quality">Quality</option>
+        <option value="Maintenance">Maintenance</option>
+        <option value="Management">Management</option>
     </select>
 
-    <button onclick="login()">Login</button>
 
-    <p id="error"></p>
+    <button onclick="login()">LOGIN</button>
+
+    <p id="message"></p>
 
 </div>
+
 
 <script src="script.js"></script>
 
