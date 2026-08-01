@@ -1,21 +1,27 @@
 // ===================================
-// Solex MES Dashboard Authentication
+// Solex MES Dashboard
 // ===================================
+
+
+// Get Login Department
 
 const department = localStorage.getItem("department");
 
 
-// If no login, return to login page
+// Security check
 
 if (!department) {
+
     window.location.href = "index.html";
+
 }
 
 
-// Display department
+// Show Department
 
 document.getElementById("dept").innerHTML =
     "👤 " + department + " Department";
+
 
 
 // Logout
@@ -29,11 +35,13 @@ function logout(){
 }
 
 
+
 // ===================================
 // Power BI Configuration
 // ===================================
 
-const reportId = 
+
+const reportId =
 "b6ac0c8d-cad0-4b72-beaa-fc4dc3f0d9e4";
 
 
@@ -41,171 +49,144 @@ const tenantId =
 "efe10ad5-9f60-494c-991c-f4b5a28390ba";
 
 
-// ===================================
-// Department Wise Power BI Pages
-// ===================================
+
+// Page Mapping
 
 const pages = {
+
 
     Management:
     "7b89b3c91e4d95e740e7",
 
+
     Production:
     "d583f0c64dd166a90eaa",
 
-    Quality:
-    "7b89b3c91e4d95e740e7",
 
     Process:
     "a86e5f3003a48dcee473",
 
+
     Maintenance:
     "994fe46fc27806d8e5c4"
+
 
 };
 
 
-// Get selected page
 
 let pageName = pages[department];
 
 
-// If page not available
-
-if (!pageName) {
+if(!pageName){
 
     pageName = pages.Management;
 
 }
 
 
-// ===================================
-// Create Power BI Embed URL
-// ===================================
+
+// Power BI URL
+
 
 let powerBIURL =
+
 "https://app.powerbi.com/reportEmbed?" +
+
 "reportId=" + reportId +
+
 "&pageName=" + pageName +
+
 "&navContentPaneEnabled=false" +
+
 "&filterPaneEnabled=false" +
+
+"&showTabs=false" +
+
 "&autoAuth=true" +
+
 "&ctid=" + tenantId;
 
 
-// Load Report
 
 document.getElementById("powerbiFrame").src = powerBIURL;
+
+
+
+
 
 // ===================================
 // Department Wise Sidebar
 // ===================================
 
+
 const menuList = document.getElementById("menuList");
+
 
 
 const menus = {
 
-    Production: [
 
-        {
-            name:"Dashboard",
-            icon:"bi-speedometer2"
-        },
+Production:[
 
-        {
-            name:"Production",
-            icon:"bi-bar-chart"
-        },
+["Dashboard","bi-speedometer2"],
 
-        {
-            name:"Reports",
-            icon:"bi-file-earmark-bar-graph"
-        }
+["Production","bi-bar-chart"],
 
-    ],
+["Reports","bi-file-earmark-bar-graph"]
+
+],
 
 
-    Process: [
 
-        {
-            name:"Dashboard",
-            icon:"bi-speedometer2"
-        },
+Process:[
 
-        {
-            name:"Process",
-            icon:"bi-cpu"
-        },
+["Dashboard","bi-speedometer2"],
 
-        {
-            name:"Reports",
-            icon:"bi-file-earmark-bar-graph"
-        }
+["Process","bi-cpu"],
 
-    ],
+["Reports","bi-file-earmark-bar-graph"]
+
+],
 
 
-    Maintenance: [
 
-        {
-            name:"Dashboard",
-            icon:"bi-speedometer2"
-        },
+Maintenance:[
 
-        {
-            name:"Maintenance",
-            icon:"bi-tools"
-        },
+["Dashboard","bi-speedometer2"],
 
-        {
-            name:"Reports",
-            icon:"bi-file-earmark-bar-graph"
-        }
+["Maintenance","bi-tools"],
 
-    ],
+["Reports","bi-file-earmark-bar-graph"]
+
+],
 
 
-    Management: [
 
-        {
-            name:"Dashboard",
-            icon:"bi-speedometer2"
-        },
+Management:[
 
-        {
-            name:"Production",
-            icon:"bi-bar-chart"
-        },
+["Dashboard","bi-speedometer2"],
 
-        {
-            name:"Process",
-            icon:"bi-cpu"
-        },
+["Production","bi-bar-chart"],
 
-        {
-            name:"Maintenance",
-            icon:"bi-tools"
-        },
+["Process","bi-cpu"],
 
-        {
-            name:"Reports",
-            icon:"bi-file-earmark-bar-graph"
-        },
+["Maintenance","bi-tools"],
 
-        {
-            name:"Settings",
-            icon:"bi-gear"
-        }
+["Reports","bi-file-earmark-bar-graph"],
 
-    ]
+["Settings","bi-gear"]
+
+]
 
 };
 
 
-// Load Menu
 
-menus[department].forEach(item => {
+// Create Sidebar
+
+
+menus[department].forEach(function(item){
 
 
     let li = document.createElement("li");
@@ -215,9 +196,9 @@ menus[department].forEach(item => {
 
     <a href="#">
 
-    <i class="bi ${item.icon}"></i>
+    <i class="bi ${item[1]}"></i>
 
-    ${item.name}
+    ${item[0]}
 
     </a>
 
