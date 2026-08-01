@@ -3,44 +3,46 @@
 // ===================================
 
 
-// Get Department
-
 const department = localStorage.getItem("department");
 
 
-// Security Check
 
-if (!department) {
+if(!department){
 
-    window.location.href = "index.html";
+window.location.href="index.html";
 
 }
 
 
 
+
 // Display Department
 
+
 document.getElementById("dept").innerHTML =
-    "👤 " + department + " Department";
+"👤 " + department + " Department";
+
 
 
 
 
 // Logout
 
+
 function logout(){
 
-    localStorage.removeItem("department");
+localStorage.removeItem("department");
 
-    window.location.href = "index.html";
+window.location.href="index.html";
 
 }
 
 
 
 
+
 // ===================================
-// Power BI Configuration
+// POWER BI SETTINGS
 // ===================================
 
 
@@ -54,7 +56,9 @@ const tenantId =
 
 
 
-// Page IDs
+
+// Power BI Pages
+
 
 const pages = {
 
@@ -89,9 +93,15 @@ Settings:
 
 
 
-// Load Power BI Page Function
+
+// Load Power BI Page
+
 
 function loadPowerBI(page){
+
+
+console.log("Opening:",page);
+
 
 
 let url =
@@ -114,7 +124,9 @@ let url =
 
 
 
-document.getElementById("powerbiFrame").src = url;
+
+document.getElementById("powerbiFrame").src=url;
+
 
 
 }
@@ -123,39 +135,12 @@ document.getElementById("powerbiFrame").src = url;
 
 
 
-// ===================================
-// Initial Department Page
-// ===================================
-
-
-let startPage = pages[department];
-
-
-if(!startPage){
-
-    startPage = pages.Dashboard;
-
-}
-
-
-loadPowerBI(
-    
-    department == "Management" 
-    ? "Dashboard" 
-    : department
-
-);
-
-
 
 
 
 // ===================================
-// Sidebar Menu
+// SIDEBAR MENU
 // ===================================
-
-
-const menuList = document.getElementById("menuList");
 
 
 
@@ -175,7 +160,6 @@ Production:[
 
 
 
-
 Process:[
 
 ["Dashboard","bi-speedometer2"],
@@ -188,7 +172,6 @@ Process:[
 
 
 
-
 Maintenance:[
 
 ["Dashboard","bi-speedometer2"],
@@ -198,7 +181,6 @@ Maintenance:[
 ["Reports","bi-file-earmark-bar-graph"]
 
 ],
-
 
 
 
@@ -225,31 +207,49 @@ Management:[
 
 
 
-// Create Menu
+
+
+// Create Sidebar
+
+
+const menuList=document.getElementById("menuList");
+
 
 
 menus[department].forEach(function(item){
 
 
 
-let li = document.createElement("li");
+let li=document.createElement("li");
 
 
 
-li.innerHTML = `
-
-<a href="#" onclick="loadPowerBI('${item[0]}')">
+let a=document.createElement("a");
 
 
+a.href="#";
+
+
+a.innerHTML=
+
+`
 <i class="bi ${item[1]}"></i>
-
 ${item[0]}
-
-
-</a>
-
 `;
 
+
+
+a.onclick=function(e){
+
+e.preventDefault();
+
+loadPowerBI(item[0]);
+
+};
+
+
+
+li.appendChild(a);
 
 
 menuList.appendChild(li);
@@ -257,3 +257,36 @@ menuList.appendChild(li);
 
 
 });
+
+
+
+
+
+
+
+// Initial Page Load
+
+
+if(department=="Production"){
+
+loadPowerBI("Production");
+
+}
+
+else if(department=="Process"){
+
+loadPowerBI("Process");
+
+}
+
+else if(department=="Maintenance"){
+
+loadPowerBI("Maintenance");
+
+}
+
+else{
+
+loadPowerBI("Dashboard");
+
+}
