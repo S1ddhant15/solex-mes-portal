@@ -3,12 +3,12 @@
 // ===================================
 
 
-// Get Login Department
+// Get Department
 
 const department = localStorage.getItem("department");
 
 
-// Security check
+// Security Check
 
 if (!department) {
 
@@ -17,10 +17,12 @@ if (!department) {
 }
 
 
-// Show Department
+
+// Display Department
 
 document.getElementById("dept").innerHTML =
     "👤 " + department + " Department";
+
 
 
 
@@ -33,6 +35,7 @@ function logout(){
     window.location.href = "index.html";
 
 }
+
 
 
 
@@ -50,52 +53,54 @@ const tenantId =
 
 
 
-// Page Mapping
+
+// Page IDs
 
 const pages = {
 
 
-    Management:
-    "7b89b3c91e4d95e740e7",
+Dashboard:
+"7b89b3c91e4d95e740e7",
 
 
-    Production:
-    "d583f0c64dd166a90eaa",
+Production:
+"d583f0c64dd166a90eaa",
 
 
-    Process:
-    "a86e5f3003a48dcee473",
+Process:
+"a86e5f3003a48dcee473",
 
 
-    Maintenance:
-    "994fe46fc27806d8e5c4"
+Maintenance:
+"994fe46fc27806d8e5c4",
+
+
+Reports:
+"7b89b3c91e4d95e740e7",
+
+
+Settings:
+"7b89b3c91e4d95e740e7"
 
 
 };
 
 
 
-let pageName = pages[department];
 
 
-if(!pageName){
+// Load Power BI Page Function
 
-    pageName = pages.Management;
-
-}
+function loadPowerBI(page){
 
 
-
-// Power BI URL
-
-
-let powerBIURL =
+let url =
 
 "https://app.powerbi.com/reportEmbed?" +
 
 "reportId=" + reportId +
 
-"&pageName=" + pageName +
+"&pageName=" + pages[page] +
 
 "&navContentPaneEnabled=false" +
 
@@ -109,42 +114,53 @@ let powerBIURL =
 
 
 
-document.getElementById("powerbiFrame").src = powerBIURL;
+document.getElementById("powerbiFrame").src = url;
+
+
+}
 
 
 
 
 
 // ===================================
-// Department Wise Sidebar + Navigation
+// Initial Department Page
 // ===================================
+
+
+let startPage = pages[department];
+
+
+if(!startPage){
+
+    startPage = pages.Dashboard;
+
+}
+
+
+loadPowerBI(
+    
+    department == "Management" 
+    ? "Dashboard" 
+    : department
+
+);
+
+
+
+
+
+// ===================================
+// Sidebar Menu
+// ===================================
+
 
 const menuList = document.getElementById("menuList");
 
 
-// Power BI Page Names
-
-const menuPages = {
-
-    Dashboard: "7b89b3c91e4d95e740e7",
-
-    Production: "d583f0c64dd166a90eaa",
-
-    Process: "a86e5f3003a48dcee473",
-
-    Maintenance: "994fe46fc27806d8e5c4",
-
-    Reports: "7b89b3c91e4d95e740e7",
-
-    Settings: "7b89b3c91e4d95e740e7"
-
-};
-
-
-
-// Department Menu
 
 const menus = {
+
 
 
 Production:[
@@ -156,6 +172,7 @@ Production:[
 ["Reports","bi-file-earmark-bar-graph"]
 
 ],
+
 
 
 
@@ -171,6 +188,7 @@ Process:[
 
 
 
+
 Maintenance:[
 
 ["Dashboard","bi-speedometer2"],
@@ -180,6 +198,7 @@ Maintenance:[
 ["Reports","bi-file-earmark-bar-graph"]
 
 ],
+
 
 
 
@@ -204,62 +223,37 @@ Management:[
 
 
 
-// Function to change Power BI page
-
-function changePowerBIPage(page){
 
 
-    let newURL =
+// Create Menu
 
-    "https://app.powerbi.com/reportEmbed?" +
-
-    "reportId=" + reportId +
-
-    "&pageName=" + menuPages[page] +
-
-    "&navContentPaneEnabled=false" +
-
-    "&filterPaneEnabled=false" +
-
-    "&showTabs=false" +
-
-    "&autoAuth=true" +
-
-    "&ctid=" + tenantId;
-
-
-
-    document.getElementById("powerbiFrame").src = newURL;
-
-
-}
-
-
-
-
-
-// Create Sidebar
 
 menus[department].forEach(function(item){
 
 
-    let li = document.createElement("li");
+
+let li = document.createElement("li");
 
 
-    li.innerHTML = `
 
-    <a href="#" onclick="changePowerBIPage('${item[0]}')">
+li.innerHTML = `
 
-        <i class="bi ${item[1]}"></i>
-
-        ${item[0]}
-
-    </a>
-
-    `;
+<a href="#" onclick="loadPowerBI('${item[0]}')">
 
 
-    menuList.appendChild(li);
+<i class="bi ${item[1]}"></i>
+
+${item[0]}
+
+
+</a>
+
+`;
+
+
+
+menuList.appendChild(li);
+
 
 
 });
