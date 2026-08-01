@@ -37,15 +37,12 @@ const user=users.find(u=>u.username===username && u.password===password);
 if(user){
 
 sessionStorage.setItem("loggedIn","true");
-
 sessionStorage.setItem("username",user.username);
-
 sessionStorage.setItem("role",user.role);
 
 window.location.href="dashboard.html";
 
 }
-
 else{
 
 document.getElementById("error").innerHTML="Invalid Username or Password";
