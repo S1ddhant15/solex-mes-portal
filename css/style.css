@@ -1,313 +1,148 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+body{
 
-body.login-page{
-    background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-    url("../assets/background.jpg");
-    background-size:cover;
-    background-position:center;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.login-box{
-
-    width:400px;
-
-    background:rgba(255,255,255,.12);
-
-    backdrop-filter:blur(15px);
-
-    padding:40px;
-
-    border-radius:20px;
-
-    text-align:center;
-
-    color:white;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
+margin:0;
+font-family:Arial, sans-serif;
 
 }
+
+
+/* LOGIN PAGE */
+
+.login-body{
+
+height:100vh;
+
+background-image:url("images/main.background.png");
+
+background-size:cover;
+
+background-position:center;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+
+
+.login-container{
+
+width:350px;
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+text-align:center;
+
+box-shadow:0px 0px 20px black;
+
+}
+
+
 
 .logo{
 
-    width:120px;
-
-    margin-bottom:15px;
+width:120px;
 
 }
 
-.login-box h1{
 
-    color:#00A651;
 
-    margin-bottom:5px;
+input,select{
 
-    font-size:30px;
+width:90%;
 
-}
+padding:12px;
 
-.login-box p{
-
-    margin-bottom:30px;
-
-    color:#ddd;
+margin:10px;
 
 }
 
-.input-group{
 
-    display:flex;
-
-    align-items:center;
-
-    background:white;
-
-    border-radius:8px;
-
-    margin-bottom:20px;
-
-    overflow:hidden;
-
-}
-
-.input-group i{
-
-    width:50px;
-
-    color:#555;
-
-}
-
-.input-group input{
-
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    outline:none;
-
-    font-size:15px;
-
-}
 
 button{
 
-    width:100%;
+width:95%;
 
-    padding:14px;
+padding:12px;
 
-    background:#00A651;
+margin-top:15px;
 
-    border:none;
+background:#0057b8;
 
-    color:white;
+color:white;
 
-    font-size:17px;
+border:none;
 
-    border-radius:8px;
+border-radius:8px;
 
-    cursor:pointer;
+font-size:16px;
 
-    transition:.3s;
-
-}
-
-button:hover{
-
-    background:#008f45;
+cursor:pointer;
 
 }
 
-.error{
 
-    color:#ffb3b3;
+#message{
 
-    margin-bottom:15px;
-
-    font-size:14px;
+color:red;
 
 }
 
 
 
-/* ---------------- DASHBOARD ---------------- */
+/* DASHBOARD */
 
-body{
+.dashboard{
 
-    background:#eef3f8;
+height:100vh;
 
-}
+background:#f2f2f2;
 
-.sidebar{
+display:flex;
 
-    position:fixed;
+justify-content:center;
 
-    width:250px;
-
-    height:100vh;
-
-    background:#162534;
-
-    color:white;
+align-items:center;
 
 }
 
-.main{
 
-    margin-left:250px;
 
-}
+.dashboard-box{
 
-.topbar{
-
-    height:70px;
-
-    background:white;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:0 25px;
-
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+text-align:center;
 
 }
+
+
 
 .cards{
 
-    display:grid;
+display:flex;
 
-    grid-template-columns:repeat(4,1fr);
+gap:20px;
 
-    gap:20px;
-
-    padding:25px;
+margin:30px;
 
 }
+
+
 
 .card{
 
-    background:white;
+background:white;
 
-    padding:25px;
+padding:30px;
 
-    border-radius:15px;
+border-radius:10px;
 
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-.card h3{
-
-    color:#777;
-
-    margin-bottom:10px;
-
-}
-
-.card h1{
-
-    color:#00A651;
-
-}
-
-.powerbi{
-
-    margin:25px;
-
-    background:white;
-
-    padding:20px;
-
-    border-radius:15px;
-
-}
-
-.powerbi iframe{
-
-    width:100%;
-
-    height:750px;
-
-    border:none;
-
-}
-.login-body{
-
-    height:100vh;
-    background-image:url("images/main.background.png");
-    background-size:cover;
-    background-position:center;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-}
-
-
-.login-box{
-
-    width:350px;
-    padding:35px;
-
-    background:rgba(255,255,255,0.9);
-
-    border-radius:15px;
-
-    text-align:center;
-
-}
-
-
-.logo{
-
-    width:120px;
-}
-
-
-.login-box input,
-.login-box select{
-
-    width:90%;
-    padding:12px;
-    margin:10px;
-
-}
-
-
-.login-box button{
-
-    width:95%;
-    padding:12px;
-
-    background:#0078d4;
-    color:white;
-
-    border:none;
-    border-radius:8px;
-
-    cursor:pointer;
-
-}
-
-
-#error{
-
-    color:red;
+box-shadow:0px 0px 10px gray;
 
 }
