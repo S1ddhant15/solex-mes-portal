@@ -1,68 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Solex Smart Manufacturing Portal</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <title>Solex MES Portal Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="login-page">
+<body class="login-body">
 
 <div class="login-box">
 
-<img src="assets/logo.png" class="logo">
+    <img src="images/logo.png" class="logo">
 
-<h1>SOLEX ENERGIES</h1>
+    <h2>Solex MES Portal</h2>
+    <p>Manufacturing Execution System</p>
 
-<p>Smart Manufacturing Portal</p>
+    <input type="text" id="username" placeholder="Username">
 
-<div class="input-group">
+    <input type="password" id="password" placeholder="Password">
 
-<i class="fa fa-user"></i>
+    <select id="department">
+        <option value="">Select Department</option>
+        <option value="production">Production</option>
+        <option value="quality">Quality</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="management">Management</option>
+    </select>
 
-<input
-type="text"
-id="username"
-placeholder="Username">
+    <button onclick="login()">Login</button>
 
-</div>
-
-<div class="input-group">
-
-<i class="fa fa-lock"></i>
-
-<input
-type="password"
-id="password"
-placeholder="Password">
+    <p id="error"></p>
 
 </div>
 
-<div id="error" class="error"></div>
-
-<button onclick="login()">
-
-LOGIN
-
-</button>
-
-</div>
-
-<script src="js/script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
