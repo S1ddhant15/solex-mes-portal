@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+if(sessionStorage.getItem("loggedIn")!=="true"){
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+<h1>MES Dashboard</h1>
+
+<h2 id="welcome"></h2>
+
+<br>
+
+<button onclick="logout()">Logout</button>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+
+document.getElementById("welcome").innerHTML=
+
+"Welcome, "+sessionStorage.getItem("role");
+
+</script>
+
+</body>
+
+</html>
