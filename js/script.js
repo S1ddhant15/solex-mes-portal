@@ -1,50 +1,32 @@
 function login(){
 
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    let department = document.getElementById("department").value;
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var department = document.getElementById("department").value;
 
 
-    let users = {
+    if(
+        (department=="Production" && username=="production" && password=="1234") ||
 
-        "production": {
-            username:"production",
-            password:"1234"
-        },
+        (department=="Quality" && username=="quality" && password=="1234") ||
 
-        "quality":{
-            username:"quality",
-            password:"1234"
-        },
+        (department=="Maintenance" && username=="maintenance" && password=="1234") ||
 
-        "maintenance":{
-            username:"maintenance",
-            password:"1234"
-        },
-
-        "management":{
-            username:"admin",
-            password:"1234"
-        }
-
-    };
-
-
-    if(users[department] &&
-       username === users[department].username &&
-       password === users[department].password)
+        (department=="Management" && username=="admin" && password=="1234")
+    )
     {
 
-        localStorage.setItem("department",department);
+        localStorage.setItem("userDepartment", department);
 
         window.location.href="dashboard.html";
 
     }
 
-    else{
+    else
+    {
 
-        document.getElementById("error").innerHTML =
-        "Invalid username or password";
+        document.getElementById("message").innerHTML =
+        "Invalid Login Details";
 
     }
 
