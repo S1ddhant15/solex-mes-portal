@@ -7,19 +7,19 @@ function login() {
     let users = {
         "Production": {
             username: "production",
-            password: "1234"
+            password: "Solex@Prod5"
         },
         "Quality": {
             username: "quality",
-            password: "1234"
+            password: "Solex@Qua7"
         },
         "Maintenance": {
             username: "maintenance",
-            password: "1234"
+            password: "Solex@Maint9"
         },
         "Management": {
             username: "admin",
-            password: "1234"
+            password: "Solex@987"
         }
     };
 
