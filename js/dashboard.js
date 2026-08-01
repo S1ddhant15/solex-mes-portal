@@ -39,7 +39,7 @@ const reports = {
 };
 
 // Load Power BI Report
-document.getElementById("powerbiFrame").src = reports[department];
+// document.getElementById("powerbiFrame").src = reports[department];
 
 // Show current date & time
 const now = new Date();
