@@ -1,56 +1,41 @@
-// ---------------- USERS ----------------
-
-const users = [
-
-{
-    username:"admin",
-    password:"Solex@987",
-    role:"Admin"
-},
-
-{
-    username:"production",
-    password:"Solex@Prod5",
-    role:"Production"
-},
-
-{
-    username:"quality",
-    password:"Solex@Qua7",
-    role:"Quality"
-},
-
-{
-    username:"maintenance",
-    password:"Solex@Maint9",
-    role:"Maintenance"
-}
-
-];
-
-
-// ---------------- LOGIN ----------------
-
 function login(){
 
-    const username=document.getElementById("username").value.trim();
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let department = document.getElementById("department").value;
 
-    const password=document.getElementById("password").value.trim();
 
-    const user=users.find(u=>
+    let users = {
 
-        u.username===username &&
-        u.password===password
+        "production": {
+            username:"production",
+            password:"1234"
+        },
 
-    );
+        "quality":{
+            username:"quality",
+            password:"1234"
+        },
 
-    if(user){
+        "maintenance":{
+            username:"maintenance",
+            password:"1234"
+        },
 
-        sessionStorage.setItem("loggedIn","true");
+        "management":{
+            username:"admin",
+            password:"1234"
+        }
 
-        sessionStorage.setItem("username",user.username);
+    };
 
-        sessionStorage.setItem("role",user.role);
+
+    if(users[department] &&
+       username === users[department].username &&
+       password === users[department].password)
+    {
+
+        localStorage.setItem("department",department);
 
         window.location.href="dashboard.html";
 
@@ -58,19 +43,9 @@ function login(){
 
     else{
 
-        document.getElementById("error").innerHTML="Invalid Username or Password";
+        document.getElementById("error").innerHTML =
+        "Invalid username or password";
 
     }
-
-}
-
-
-// ---------------- LOGOUT ----------------
-
-function logout(){
-
-    sessionStorage.clear();
-
-    window.location.href="index.html";
 
 }
