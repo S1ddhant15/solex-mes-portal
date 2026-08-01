@@ -30,7 +30,7 @@ function logout(){
 
 
 // ===================================
-// Power BI Page Configuration
+// Power BI Configuration
 // ===================================
 
 const reportId = 
@@ -41,7 +41,9 @@ const tenantId =
 "efe10ad5-9f60-494c-991c-f4b5a28390ba";
 
 
-// Department wise pages
+// ===================================
+// Department Wise Power BI Pages
+// ===================================
 
 const pages = {
 
@@ -63,12 +65,23 @@ const pages = {
 };
 
 
-// Select page
+// Get selected page
 
 let pageName = pages[department];
 
 
-// Power BI Embed URL
+// If page not available
+
+if (!pageName) {
+
+    pageName = pages.Management;
+
+}
+
+
+// ===================================
+// Create Power BI Embed URL
+// ===================================
 
 let powerBIURL =
 "https://app.powerbi.com/reportEmbed?" +
@@ -80,6 +93,6 @@ let powerBIURL =
 "&ctid=" + tenantId;
 
 
-// Load Power BI
+// Load Report
 
 document.getElementById("powerbiFrame").src = powerBIURL;
