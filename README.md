@@ -1,6 +1,6 @@
-# Solex MES Portal
+# Solex Manufacturing Analytics
 
-GitHub Pages prototype for department-controlled MES and Power BI access.
+GitHub Pages prototype for department-controlled manufacturing analytics and Power BI access.
 
 ## Shared Employee ID login
 
@@ -14,25 +14,25 @@ After a valid central login, the requested MES workspace opens full viewport ins
 
 | Central portal department | Visible MES dashboards |
 | --- | --- |
-| Production | Production only |
-| Quality | Quality & Process only |
-| Maintenance | Maintenance only |
-| Process Engineering | Process only |
-| PPC | Production only |
+| Production | Main Page + Production; opens Production by default |
+| Quality | Main Page + Quality & Process; opens Quality & Process by default |
+| Maintenance | Main Page + Maintenance; opens Maintenance by default |
+| Process Engineering | Main Page + Process; opens Process by default |
+| PPC | Main Page + Production planning view; opens Production by default |
 | Management | Overview, Production, Process, Maintenance and Reports |
 | Operations Excellence / Administrator | All dashboards and Settings |
 
-The sidebar is built only from authorised pages. `dashboard.html?page=...` is also validated before the Power BI iframe loads, so an unauthorised page request falls back to the user's assigned dashboard.
+The sidebar is built only from Main Page plus the authorised department page. `dashboard.html?page=...` is validated before the Power BI iframe loads, and each login opens its department dashboard by default.
 
 ## Central prototype credentials
 
 | Employee ID | Password | Access profile |
 | --- | --- | --- |
 | SX1001 | Admin@123 | MES Administrator |
-| SX2001 | Maint@123 | Maintenance only |
-| SX3001 | Prod@123 | Production only |
-| SX4001 | Quality@123 | Quality & Process only |
-| SX4501 | Process@123 | Process only |
+| SX2001 | Maint@123 | Main Page + Maintenance |
+| SX3001 | Prod@123 | Main Page + Production |
+| SX4001 | Quality@123 | Main Page + Quality & Process |
+| SX4501 | Process@123 | Main Page + Process |
 | SX6001 | Ppc@123 | Production planning view |
 | SX7001 | Manage@123 | Management views |
 
