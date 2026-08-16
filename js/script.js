@@ -1,37 +1,9 @@
-function login() {
+const CENTRAL_MES_LOGIN = "/solex-digital-portal/index.html?app=mes";
+const continueButton = document.getElementById("continueButton");
 
-    let username = document.getElementById("username").value.trim();
-    let password = document.getElementById("password").value.trim();
-    let department = document.getElementById("department").value;
-
-    let users = {
-        "Production": {
-            username: "production",
-            password: "Solex@Prod5"
-        },
-        "Quality": {
-            username: "quality",
-            password: "Solex@Qua7"
-        },
-        "Maintenance": {
-            username: "maintenance",
-            password: "Solex@Maint9"
-        },
-        "Management": {
-            username: "admin",
-            password: "Solex@987"
-        }
-    };
-
-    if (
-        users[department] &&
-        username === users[department].username &&
-        password === users[department].password
-    ) {
-        localStorage.setItem("department", department);
-        window.location.href = "dashboard.html";
-    } else {
-        document.getElementById("message").innerHTML =
-            "❌ Invalid username, password or department.";
-    }
+function openCentralLogin() {
+  window.top.location.replace(CENTRAL_MES_LOGIN);
 }
+
+continueButton.addEventListener("click", openCentralLogin);
+setTimeout(openCentralLogin, 900);
