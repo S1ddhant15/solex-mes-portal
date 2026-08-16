@@ -39,7 +39,7 @@ const icons = {
 };
 
 const labels = {
-  Dashboard: "Management Overview",
+  Dashboard: "Main Page",
   Production: "Production Dashboard",
   Process: user.department === "Quality" ? "Quality & Process Dashboard" : "Process Dashboard",
   Maintenance: "Maintenance Dashboard",
@@ -48,11 +48,11 @@ const labels = {
 };
 
 const accessMatrix = {
-  Production: ["Production"],
-  Quality: ["Process"],
-  Maintenance: ["Maintenance"],
-  "Process Engineering": ["Process"],
-  PPC: ["Production"],
+  Production: ["Dashboard", "Production"],
+  Quality: ["Dashboard", "Process"],
+  Maintenance: ["Dashboard", "Maintenance"],
+  "Process Engineering": ["Dashboard", "Process"],
+  PPC: ["Dashboard", "Production"],
   Management: ["Dashboard", "Production", "Process", "Maintenance", "Reports"],
   "Operations Excellence": ["Dashboard", "Production", "Process", "Maintenance", "Reports", "Settings"]
 };
@@ -70,7 +70,7 @@ const frame = document.getElementById("powerbiFrame");
 const toast = document.getElementById("toast");
 
 document.getElementById("dept").textContent = `${user.name} · ${user.department}`;
-document.getElementById("accessProfile").textContent = user.admin ? "MES Administrator" : `${user.department} only`;
+document.getElementById("accessProfile").textContent = user.admin ? "Analytics Administrator" : `${user.department} dashboards`;
 
 function showToast(message) {
   toast.textContent = message;
@@ -80,7 +80,7 @@ function showToast(message) {
 
 function loadPowerBI(page, updateHistory = true) {
   if (!allowedPages.includes(page) || !pages[page]) {
-    showToast("This dashboard is not included in your MES access profile.");
+    showToast("This dashboard is not included in your Analytics access profile.");
     return false;
   }
 
@@ -132,10 +132,20 @@ function logout() {
 }
 
 const requestedPage = new URLSearchParams(location.search).get("page");
-const initialPage = requestedPage && allowedPages.includes(requestedPage) ? requestedPage : allowedPages[0];
+const defaultPageByDepartment = {
+  Production: "Production",
+  Quality: "Process",
+  Maintenance: "Maintenance",
+  "Process Engineering": "Process",
+  PPC: "Production",
+  Management: "Dashboard",
+  "Operations Excellence": "Dashboard"
+};
+const departmentDefault = defaultPageByDepartment[user.department] || allowedPages[0];
+const initialPage = requestedPage && allowedPages.includes(requestedPage) ? requestedPage : departmentDefault;
 
 if (requestedPage && !allowedPages.includes(requestedPage)) {
-  document.getElementById("accessNotice").textContent = `Restricted route blocked. ${labels[initialPage]} is the only authorised opening dashboard for this login.`;
+  document.getElementById("accessNotice").textContent = `Restricted route blocked. Opening the authorised ${labels[initialPage]} for ${user.department}.`;
   document.getElementById("accessNotice").classList.add("visible");
 }
 
