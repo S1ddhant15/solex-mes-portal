@@ -1,60 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solex MES Portal</title>
-
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening Solex MES Portal</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="login-body">
-
-    <div class="login-container">
-
-        <img src="images/logo.png" class="logo" alt="Solex Logo">
-
-        <h1>Solex MES Portal</h1>
-
-        <p>Manufacturing Execution System</p>
-
-        <input
-            type="text"
-            id="username"
-            placeholder="Username"
-        >
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Password"
-        >
-
-        <select id="department">
-
-            <option value="">Select Department</option>
-
-            <option value="Production">Production</option>
-
-            <option value="Quality">Quality</option>
-
-            <option value="Maintenance">Maintenance</option>
-
-            <option value="Management">Management</option>
-
-        </select>
-
-        <button type="button" onclick="login()">
-            LOGIN
-        </button>
-
-        <p id="message"></p>
-
-    </div>
-
-    <script src="js/script.js"></script>
-
+  <div class="login-container">
+    <img src="images/logo.png" class="logo" alt="Solex Energies">
+    <span class="eyebrow">ONE SOLEX LOGIN</span>
+    <h1>Solex MES Portal</h1>
+    <p>MES now uses your Digital Operations Portal Employee ID and password.</p>
+    <button id="continueButton" type="button">CONTINUE TO CENTRAL LOGIN →</button>
+    <small>Redirecting to the shared portal…</small>
+  </div>
+  <script src="js/script.js"></script>
 </body>
-
 </html>
